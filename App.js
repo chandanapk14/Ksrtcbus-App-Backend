@@ -86,6 +86,21 @@ app.post("/add",(req,res)=>{
 
 })
 
+
+app.post("/search",(req,res)=>{
+    let input=req.body
+    let bus=new busmodel(input)
+    busmodel.find(input).then(
+        (data)=>{
+            res.json(data)
+        }  
+    ).catch(
+        (error)=>{
+            res.json(error)
+        }
+    )
+})
+
 app.listen(8061,()=>{
     console.log("server started")
 })
