@@ -4,6 +4,7 @@ const cors=require("cors")
 const bcrypt=require("bcryptjs")
 const jwt=require("jsonwebtoken")
 const {usermodel}=require("./models/Register")
+const {busmodel}=require("./models/Bus")
 const app=express()
 app.use(cors())
 app.use(express.json())
@@ -74,6 +75,14 @@ app.post('/login',(req,res)=>{
             }
         }
     })
+
+})
+
+app.post("/add",(req,res)=>{
+    let input=req.body
+    let bus=new busmodel(input)
+    res.json({"status":"success"})
+    bus.save()
 
 })
 
