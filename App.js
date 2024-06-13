@@ -114,6 +114,18 @@ app.post("/delete",(req,res)=>
             }
         )
     })
+
+    app.post("/viewbus",(req,res)=>{
+        busmodel.find().then(
+            (data)=>{
+                res.json(data)
+            }
+        ).catch(
+            (error)=>{
+                res.json(error)
+            }
+        )
+    })
     
 app.listen(8061,()=>{
     console.log("server started")
